@@ -1,4 +1,8 @@
-sourin
+Sourin: NativeObject > SourceCode
 ======
 
-Object2SourceCode converter for objects that contains functions.
+Support for objects that contains functions.
+
+```bash
+$ npm install sourin
+```

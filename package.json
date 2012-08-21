@@ -1,0 +1,19 @@
+{
+  "author": "Andrey Yamanov <tenphi@gmail.com> (tenphi.com)",
+  "name": "sourin",
+  "description": "Object22SourceCode converter for objects that contains functions",
+  "version": "0.0.1",
+  "homepage": "https://github.com/tenphi/sourin",
+  "repository": {
+    "url": "https://github.com/tenphi/sourin"
+  },
+  "main": "./sourin.js",
+  "dependencies": {
+    "uglify-js": "*"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
