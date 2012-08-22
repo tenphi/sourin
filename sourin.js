@@ -3,22 +3,21 @@
 /*
 Sourin - NativeObject2SourceCode converter for objects that contains functions.
 @copyright Yamanov Andrey <tenphi@gmail.com>
-@version 0.1
+@version 0.0.2
 */
 
 
 (function() {
-  var isArray, isBoolean, isFunction, isNumber, isObject, isString, serializeArray, serializeObject, serializeValue, type, types, uglify;
+  var isArray, isBoolean, isFunction, isNumber, isObject, isString, serializeArray, serializeObject, serializeValue, type, uglify;
 
   uglify = require('uglify-js');
 
-  types = 'Boolean Number String Function Array Date Regexp Undefined Null'.split(' ');
-
   type = (function() {
-    var classToType, name, _i, _len;
+    var classToType, name, _i, _len, _ref;
     classToType = {};
-    for (_i = 0, _len = types.length; _i < _len; _i++) {
-      name = types[_i];
+    _ref = 'Boolean Number String Function Array Date Regexp Undefined Null'.split(' ');
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      name = _ref[_i];
       classToType['[object ' + name + ']'] = name.toLowerCase();
     }
     return function(obj) {
@@ -59,6 +58,7 @@ Sourin - NativeObject2SourceCode converter for objects that contains functions.
     } else {
       ret = serializeValue(obj);
     }
+    ret = '(' + ret + ')';
     if (min) {
       return uglify(ret);
     } else {

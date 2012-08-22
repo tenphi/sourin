@@ -1,16 +1,14 @@
 ###
 Sourin - NativeObject2SourceCode converter for objects that contains functions.
 @copyright Yamanov Andrey <tenphi@gmail.com>
-@version 0.1
+@version 0.0.2
 ###
 
 uglify = require 'uglify-js'
 
-types = 'Boolean Number String Function Array Date Regexp Undefined Null'.split(' ')
-
 type = do ->
     classToType = {}
-    for name in types
+    for name in 'Boolean Number String Function Array Date Regexp Undefined Null'.split(' ')
         classToType['[object ' + name + ']'] = name.toLowerCase()
 
     (obj) ->
@@ -41,6 +39,7 @@ module.exports = (obj, min) ->
         ret = serializeObject obj
     else
         ret = serializeValue obj
+    ret = '(' + ret + ')'
     return if min then uglify(ret) else ret
 
 serializeArray = (obj) ->
