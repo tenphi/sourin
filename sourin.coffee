@@ -5,6 +5,7 @@ Sourin - NativeObject2SourceCode converter for objects that contains functions.
 ###
 
 uglify = require 'uglify-js'
+beautify = require('js-beautify').js_beautify
 
 type = do ->
     classToType = {}
@@ -40,7 +41,12 @@ module.exports = (obj, min) ->
     else
         ret = serializeValue obj
     ret = '(' + ret + ')'
-    return if min then uglify(ret) else ret
+    if min is true 
+        return uglify(ret)
+    else if min is false 
+        return beautify ret
+    else
+        return ret
 
 serializeArray = (obj) ->
     out = '['
@@ -57,7 +63,8 @@ serializeObject = (obj) ->
         if (value)
             out += ','
         value = serializeValue obj[key]
-        out += '"' + key + '":' + value
+        key = JSON.stringify(key);
+        out += '' + key + ':' + value
     out += '}'
 
 serializeValue = (value) ->
