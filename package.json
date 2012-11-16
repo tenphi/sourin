@@ -9,16 +9,16 @@
   },
   "main": "./sourin.js",
   "dependencies": {
-    "uglify-js": "1.3.*",
-    "js-beautify": "0.2.*"
+    "uglify-js": "1.3.x",
+    "js-beautify": "0.2.x"
   },
   "devDependencies": {
-    "nodeunit": "0.*",
-    "coffee-script": "1.*"
+    "nodeunit": "0.x.x",
+    "coffee-script": "1.x.x"
   },
   "optionalDependencies": {},
   "engines": {
-    "node": "0.*"
+    "node": ">= 0.8.0"
   },
   "scripts": {
     "test": "nodeunit tests.js"
